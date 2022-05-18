@@ -1,5 +1,4 @@
 import React from "react";
-import axios from 'axios';
 // components
 
 import ProductCards from "../../components/Products/ProductCards.js";
