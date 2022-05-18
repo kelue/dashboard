@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react"
-import {validateEmail, validatePassword} from "../components/validateForm";
-import SignInForm from "../components/SignInForm";
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom";
+import {validateEmail, validatePassword} from "../auth/validateForm";
+import SignInForm from "../auth/SignInForm";
 import bg from '../assets/background.jpg'
 
 
 
   function SignIn() {
-    const [formValid, setFormValid] = useState(false)
+    const navigate = useNavigate();
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -40,19 +41,6 @@ import bg from '../assets/background.jpg'
       return (emailValidateResult && !pwdValidateError)
     }
 
-    useEffect(()=>{
-        if (
-            form.email !== "" &&
-            form.password !== ""
-        ){
-            setFormValid(true)
-        } else {
-            setFormValid(false)
-        }
-    }, [form])
-
-   
-
     const handleChange = (e) => {
         setForm({
             ...form,
@@ -63,9 +51,9 @@ import bg from '../assets/background.jpg'
     const submitHandler = (e) => {
       e.preventDefault()
       if (validateForm(form.email, form.password)) {
-         console.log("correct email & password")
+        sessionStorage.setItem('userDetails', JSON.stringify({...form}))
+        navigate('/admin')
       }
-      sessionStorage.setItem('userDetails', JSON.stringify({...form}))
       // setTimeout(() => {
       //     window.location="/"
       // }, 5000); 
@@ -76,7 +64,7 @@ import bg from '../assets/background.jpg'
     <>
       <div className="flex flex-wrap w-full">
         <div className="w-1/2 shadow-2xl">
-            <img className="hidden object-cover w-full h-screen md:block" src={bg}/>
+            <img className="hidden object-cover w-full h-screen md:block" src={bg} alt='background'/>
         </div>
         <div className="flex flex-col w-full md:w-1/2">
           <div className="flex justify-center pt-12 md:justify-start md:pl-12 md:-mb-24">
