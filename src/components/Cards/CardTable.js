@@ -5,7 +5,7 @@ import axios from 'axios';
 
 // components
 
-import TableDropdown from "../../components/Dropdowns/TableDropdown.js";
+// import TableDropdown from "../../components/Dropdowns/TableDropdown.js";
 
 export default function CardTable({ color }) {
   const [customers, setcustomers] = useState("")
@@ -46,7 +46,7 @@ export default function CardTable({ color }) {
               <tr>
                 <th
                   className={
-                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" +
+                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold" +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
@@ -56,7 +56,7 @@ export default function CardTable({ color }) {
                 </th>
                 <th
                   className={
-                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold" +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
@@ -66,7 +66,7 @@ export default function CardTable({ color }) {
                 </th>
                 <th
                   className={
-                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold " +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
@@ -76,7 +76,7 @@ export default function CardTable({ color }) {
                 </th>
                 <th
                   className={
-                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold" +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
@@ -107,8 +107,8 @@ export default function CardTable({ color }) {
             <tbody>
                   {
                     customers ? customers.map((customer, id) =>(
-                      <tr key={id}>
-                      <th className="border-t-0 px-14 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                      <tr key={id} className=' text-center'>
+                      <th className="border-t-0 px-14 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 flex items-center">
                         <img
                           src={customer.image}
                           className="h-12 w-12 bg-white rounded-full border"

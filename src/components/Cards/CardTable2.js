@@ -5,13 +5,13 @@ import axios from 'axios';
 
 // components
 
-import TableDropdown from "../../components/Dropdowns/TableDropdown.js";
+// import TableDropdown from "../../components/Dropdowns/TableDropdown.js";
 
 export default function CardTable({ color }) {
   const [clients, setclients] = useState("")
 
   useEffect(() => {
-    axios.get('https://fakerapi.it/api/v1/companies?_quantity=1')
+    axios.get('https://fakerapi.it/api/v1/companies?_quantity=6')
     .then(response => setclients(response.data.data))
   }, [])
   
@@ -40,13 +40,13 @@ export default function CardTable({ color }) {
           </div>
         </div>
         <div className="block w-full overflow-x-auto">
-          {/* Projects table */}
+          {/* Clients table */}
           <table className="items-center justify-center w-full bg-transparent border-collapse">
             <thead>
               <tr>
                 <th
                   className={
-                    "px-4 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" +
+                    "px-4 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold" +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
@@ -56,7 +56,7 @@ export default function CardTable({ color }) {
                 </th>
                 <th
                   className={
-                    "px-4 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-4 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold" +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
@@ -66,7 +66,7 @@ export default function CardTable({ color }) {
                 </th>
                 <th
                   className={
-                    "px-4 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-4 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold" +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
@@ -76,7 +76,7 @@ export default function CardTable({ color }) {
                 </th>
                 <th
                   className={
-                    "px-4 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-4 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold " +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
@@ -107,8 +107,8 @@ export default function CardTable({ color }) {
             <tbody>
                   {
                     clients ? clients.map((client, id) =>(
-                      <tr key={id}>
-                      <th className="border-t-0 px-14 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                      <tr key={id} className='text-center'>
+                      <th className="border-t-0 px-14 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 flex items-center">
                         <img
                           src={client.image}
                           className="h-12 w-12 bg-white rounded-full border"

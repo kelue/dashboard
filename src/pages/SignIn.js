@@ -25,7 +25,7 @@ import bg from '../assets/background.jpg'
       const emailValidateResult = validateEmail(email)
 
       if (!emailValidateResult) {
-          setemailError("Please enter valid email address");
+          setemailError("Please enter a valid email address");
         } else {
         setemailError("");
       }
@@ -83,7 +83,7 @@ import bg from '../assets/background.jpg'
             onPasswordError={Pwderror}/>
             <div className="pt-12 pb-12 text-center">
                 <p>
-                    Don&#x27;t have an account?
+                    Don&#x27;t have an account?{"  "}
                     <a href="#" className="font-semibold underline">
                         Register here.
                     </a>

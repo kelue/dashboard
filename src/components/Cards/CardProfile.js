@@ -1,5 +1,5 @@
 import React from "react";
-
+import profile from '../../assets/img/team-2-800x800.jpg'
 // components
 
 export default function CardProfile() {
@@ -12,7 +12,7 @@ export default function CardProfile() {
               <div className="relative">
                 <img
                   alt="..."
-                  src={require("../../assets/img/team-2-800x800.jpg").default}
+                  src={profile}
                   className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                 />
               </div>
@@ -50,7 +50,7 @@ export default function CardProfile() {
             </div>
             <div className="mb-2 text-blueGray-600 mt-10">
               <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
-              Solution Manager - Creative Tim Officer
+              Solution Manager - Creative Officer
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fas fa-university mr-2 text-lg text-blueGray-400"></i>
