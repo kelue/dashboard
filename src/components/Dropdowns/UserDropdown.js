@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../../assets/img/team-1-800x800.jpg"
 import { createPopper } from "@popperjs/core";
 
 const UserDropdown = () => {
@@ -31,7 +32,7 @@ const UserDropdown = () => {
             <img
               alt="..."
               className="w-full rounded-full align-middle border-none shadow-lg"
-              src={require("../../assets/img/team-1-800x800.jpg").default}
+              src={logo}
             />
           </span>
         </div>
