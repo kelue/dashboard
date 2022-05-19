@@ -43,7 +43,7 @@ import bg from '../assets/background.jpg'
 
     const handleChange = (e) => {
         setForm({
-            ...form,
+            ...form, 
             [e.target.name]: e.target.value
         })
     }
@@ -53,10 +53,13 @@ import bg from '../assets/background.jpg'
       if (validateForm(form.email, form.password)) {
         sessionStorage.setItem('userDetails', JSON.stringify({...form}))
         navigate('/admin')
-      }
-      // setTimeout(() => {
-      //     window.location="/"
-      // }, 5000); 
+
+        //sets dashboardapge to time out after 5secs
+        setTimeout(() => {
+          window.location="/"
+          sessionStorage.removeItem("userDetails")
+      }, 10000);
+      } 
     }
 
 
@@ -84,7 +87,7 @@ import bg from '../assets/background.jpg'
             <div className="pt-12 pb-12 text-center">
                 <p>
                     Don&#x27;t have an account?{"  "}
-                    <a href="#" className="font-semibold underline">
+                    <a href="/signup" className="font-semibold underline">
                         Register here.
                     </a>
                 </p>
