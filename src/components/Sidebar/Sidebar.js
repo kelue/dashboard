@@ -147,6 +147,8 @@ export default function Sidebar() {
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
                   to="/admin/tables"
+                  onClick={() => {setCollapseShow("hidden"); navigate('/admin/tables')}}
+
                 >
                   <i
                     className={
