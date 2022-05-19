@@ -58,7 +58,6 @@ import bg from '../assets/background.jpg'
         setTimeout(() => {
           window.location="/"
           sessionStorage.removeItem("userDetails")
-          settimeOut("Oops You have been timed out, please login to continue")
       }, 30000);
       } 
     }
