@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react"
-import {validateEmail, validatePassword} from "../components/validateForm";
-import SignInForm from "../components/SignInForm";
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom";
+import {validateEmail, validatePassword} from "../auth/validateForm";
+import SignInForm from "../auth/SignInForm";
 import bg from '../assets/background.jpg'
 
 
 
   function SignIn() {
-    const [formValid, setFormValid] = useState(false)
+    const navigate = useNavigate();
     const [form, setForm] = useState({
         email: "",
         password: ""
     });
     const [emailError, setemailError] = useState("")
     const [Pwderror, setPwderror] = useState("")
+
 
 
     function validateForm(mail, pass) {
@@ -24,7 +26,7 @@ import bg from '../assets/background.jpg'
       const emailValidateResult = validateEmail(email)
 
       if (!emailValidateResult) {
-          setemailError("Please enter valid email address");
+          setemailError("Please enter a valid email address");
         } else {
         setemailError("");
       }
@@ -36,26 +38,12 @@ import bg from '../assets/background.jpg'
       } else {
         setPwderror("");
       }
-      console.log(`password validation result ${pwdValidateError}`)
       return (emailValidateResult && !pwdValidateError)
     }
 
-    useEffect(()=>{
-        if (
-            form.email !== "" &&
-            form.password !== ""
-        ){
-            setFormValid(true)
-        } else {
-            setFormValid(false)
-        }
-    }, [form])
-
-   
-
     const handleChange = (e) => {
         setForm({
-            ...form,
+            ...form, 
             [e.target.name]: e.target.value
         })
     }
@@ -63,12 +51,15 @@ import bg from '../assets/background.jpg'
     const submitHandler = (e) => {
       e.preventDefault()
       if (validateForm(form.email, form.password)) {
-         console.log("correct email & password")
-      }
-      sessionStorage.setItem('userDetails', JSON.stringify({...form}))
-      // setTimeout(() => {
-      //     window.location="/"
-      // }, 5000); 
+        sessionStorage.setItem('userDetails', JSON.stringify({...form}))
+        navigate('/admin')
+
+        //sets dashboardapge to time out after 5secs
+        setTimeout(() => {
+          window.location="/"
+          sessionStorage.removeItem("userDetails")
+      }, 30000);
+      } 
     }
 
 
@@ -76,7 +67,7 @@ import bg from '../assets/background.jpg'
     <>
       <div className="flex flex-wrap w-full">
         <div className="w-1/2 shadow-2xl">
-            <img className="hidden object-cover w-full h-screen md:block" src={bg}/>
+            <img className="hidden object-cover w-full h-screen md:block" src={bg} alt='background'/>
         </div>
         <div className="flex flex-col w-full md:w-1/2">
           <div className="flex justify-center pt-12 md:justify-start md:pl-12 md:-mb-24">
@@ -92,11 +83,12 @@ import bg from '../assets/background.jpg'
             onInputChange={handleChange} 
             onSubmitHandler={submitHandler} 
             onEmailError={emailError} 
-            onPasswordError={Pwderror}/>
+            onPasswordError={Pwderror}
+            />
             <div className="pt-12 pb-12 text-center">
                 <p>
-                    Don&#x27;t have an account?
-                    <a href="#" className="font-semibold underline">
+                    Don&#x27;t have an account?{"  "}
+                    <a href="/signup" className="font-semibold underline">
                         Register here.
                     </a>
                 </p>

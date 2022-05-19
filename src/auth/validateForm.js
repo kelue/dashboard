@@ -25,6 +25,13 @@ function validatePassword(text) {
     return "";
 }
 
+function validateName(text) {
+    if (text.length < 3) return "Name should have at least 3 characters";
+    if (hasNumber(text)) return "Name should not contain numeric values";
+    if (hasSpecialChar(text)) return "Name should not contain special character";
+    return "";
+}
+
 function validateEmail(email) {
     return EmailValidator.validate(email);
 }
@@ -32,4 +39,5 @@ function validateEmail(email) {
 export {
     validatePassword,
     validateEmail,
+    validateName    
 }

@@ -1,0 +1,174 @@
+import React from "react";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import axios from 'axios';
+
+// components
+
+// import TableDropdown from "../../components/Dropdowns/TableDropdown.js";
+
+export default function CardTable({ color }) {
+  const [customers, setcustomers] = useState("")
+
+  useEffect(() => {
+    axios.get('https://fakerapi.it/api/v1/persons?_quantity=10')
+    .then(response => setcustomers(response.data.data))
+  }, [])
+  
+  console.log(customers)
+  
+  return (
+    <>
+      <div
+        className={
+          "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
+          (color === "light" ? "bg-white" : "bg-lightBlue-900 text-white")
+        }
+      >
+        <div className="rounded-t mb-0 px-14 py-3 border-0">
+          <div className="flex flex-wrap items-center">
+            <div className="relative w-full px-14 max-w-full flex-grow flex-1 text-center">
+              <h3
+                className={
+                  "font-semibold text-lg " +
+                  (color === "light" ? "text-blueGray-700" : "text-white")
+                }
+              >
+                Team Members
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div className="block w-full overflow-x-auto">
+          {/* Projects table */}
+          <table className="items-center justify-center w-full bg-transparent border-collapse">
+            <thead>
+              <tr>
+                <th
+                  className={
+                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold" +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
+                  }
+                >
+                  Full Name
+                </th>
+                <th
+                  className={
+                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold" +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
+                  }
+                >
+                  Email
+                </th>
+                <th
+                  className={
+                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
+                  }
+                >
+                  Phone Number
+                </th>
+                <th
+                  className={
+                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold" +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
+                  }
+                >
+                  Gender
+                </th>
+                {/* <th
+                  className={
+                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
+                  }
+                >
+                  Image
+                </th> */}
+                {/* <th
+                  className={
+                    "px-14 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
+                  }
+                ></th> */}
+              </tr>
+            </thead>
+            <tbody>
+                  {
+                    customers ? customers.map((customer, id) =>(
+                      <tr key={id} className=' text-center'>
+                      <th className="border-t-0 px-14 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 flex items-center">
+                        <img
+                          src={customer.image}
+                          className="h-12 w-12 bg-white rounded-full border"
+                          alt="..."
+                        ></img>{"    "}
+                        <span
+                          className={
+                            "ml-3 font-bold " +
+                            +(color === "light" ? "text-blueGray-600" : "text-white")
+                          }
+                        >
+                          {`${customer.lastname}  ${customer.firstname}`}
+                        </span>
+                      </th>
+                      <td className="border-t-0 px-14 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        {customer.email}
+                      </td>
+                      <td className="border-t-0 px-14 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <p
+                          className={
+                            "ml-3 font-bold " +
+                            +(color === "light" ? "text-blueGray-600" : "text-white")
+                          }
+                        >
+                          {customer.phone}
+                        </p>
+                      </td>
+                      <td className="border-t-0 px-14 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <p
+                          className={
+                            "ml-3 font-bold " +
+                            +(color === "light" ? "text-blueGray-600" : "text-white")
+                          }
+                        >
+                         {customer.gender}
+                        </p>
+                      </td>
+                      {/* <td className="border-t-0 px-14 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            
+                      </td> */}
+                      {/* <td className="border-t-0 px-14 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
+                        <TableDropdown />
+                      </td> */}
+                    </tr>
+                    )) : null
+                  }
+
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
+  );
+}
+
+CardTable.defaultProps = {
+  color: "light",
+};
+
+CardTable.propTypes = {
+  color: PropTypes.oneOf(["light", "dark"]),
+};
