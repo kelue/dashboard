@@ -16,6 +16,7 @@ import bg from '../assets/background.jpg'
     const [Pwderror, setPwderror] = useState("")
 
 
+
     function validateForm(mail, pass) {
       const email = mail;
       const password = pass;
@@ -37,7 +38,6 @@ import bg from '../assets/background.jpg'
       } else {
         setPwderror("");
       }
-      console.log(`password validation result ${pwdValidateError}`)
       return (emailValidateResult && !pwdValidateError)
     }
 
@@ -58,7 +58,8 @@ import bg from '../assets/background.jpg'
         setTimeout(() => {
           window.location="/"
           sessionStorage.removeItem("userDetails")
-      }, 10000);
+          settimeOut("Oops You have been timed out, please login to continue")
+      }, 30000);
       } 
     }
 
@@ -83,7 +84,8 @@ import bg from '../assets/background.jpg'
             onInputChange={handleChange} 
             onSubmitHandler={submitHandler} 
             onEmailError={emailError} 
-            onPasswordError={Pwderror}/>
+            onPasswordError={Pwderror}
+            />
             <div className="pt-12 pb-12 text-center">
                 <p>
                     Don&#x27;t have an account?{"  "}

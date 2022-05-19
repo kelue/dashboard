@@ -80,7 +80,7 @@ function SignUp() {
       setTimeout(() => {
         window.location="/"
         sessionStorage.removeItem("userDetails")
-    }, 10000);
+    }, 30000);
     } 
   }
 
